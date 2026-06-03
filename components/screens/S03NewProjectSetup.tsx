@@ -113,22 +113,6 @@ export default function S03NewProjectSetup() {
                       <div className="step-in" style={{ fontSize: 13, color: "#D0D0D0", lineHeight: "20px" }}>
                         Run <span style={{ color: LILLY, fontWeight: 600 }}>/select-workflow</span> next — Portal Redesign covers all three tracks.
                       </div>
-                      <button
-                        className="step-in"
-                        onClick={() => window.dispatchEvent(new CustomEvent("df:next"))}
-                        style={{
-                          alignSelf: "flex-start",
-                          display: "flex", alignItems: "center", gap: 8,
-                          background: LILLY, color: "white",
-                          border: "none", borderRadius: 7,
-                          fontFamily: IBM, fontSize: 13, fontWeight: 600,
-                          padding: "10px 20px", cursor: "pointer",
-                          marginTop: 4,
-                        }}
-                      >
-                        Select a workflow
-                        <ArrowRight size={14} strokeWidth={2} />
-                      </button>
                     </>
                   )}
                 </div>
@@ -172,6 +156,22 @@ export default function S03NewProjectSetup() {
               ))}
             </div>
           </div>
+          {phase >= 7 && (
+            <button
+              className="fade-up-1"
+              onClick={() => window.dispatchEvent(new CustomEvent("df:next"))}
+              style={{
+                marginTop: "auto", paddingTop: 16, width: "100%",
+                padding: "12px 0",
+                background: LILLY, color: "white",
+                border: "none", borderRadius: 7,
+                fontFamily: IBM, fontSize: 13, fontWeight: 600,
+                cursor: "pointer",
+              }}
+            >
+              Kick things off in Teams →
+            </button>
+          )}
         </div>
       </div>
     </DFMarketplace>

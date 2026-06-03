@@ -150,7 +150,7 @@ export default function S04SelectWorkflow() {
                 cursor: "pointer",
               }}
             >
-              KO in Teams →
+              Kick things off in Teams →
             </button>
           ) : undefined}
         />
