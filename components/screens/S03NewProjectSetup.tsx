@@ -129,48 +129,53 @@ export default function S03NewProjectSetup() {
           </div>
         </div>
 
-        {/* Right panel — project summary */}
-        <div style={{ width: 260, flexShrink: 0, borderLeft: "1px solid #EEEEEE", background: "#FFFFFF", display: "flex", flexDirection: "column", padding: "20px", overflowY: "auto" }}>
-          <div style={{ fontFamily: IBM, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", color: "#1A1A1A", marginBottom: 14, textTransform: "uppercase" as const }}>Project Summary</div>
-          {[
-            ["Project", "LillyConnect Portal Refresh"],
-            ["ID",      "LILLYCONNECT-PORTAL"],
-            ["NPS now", "42"],
-            ["Target",  "65+"],
-            ["Refill",  "23% → improve"],
-            ["Team",    "Jordan + Maya + Jamie + Morgan"],
-          ].map(([label, value]) => (
-            <div key={label} style={{ marginBottom: 12 }}>
-              <div style={{ fontFamily: IBM, fontSize: 10, fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: "#AAAAAA", marginBottom: 2 }}>{label}</div>
-              <div style={{ fontFamily: label === "ID" ? MONO : IBM, fontSize: 12, color: "#1A1A1A", lineHeight: "16px" }}>{value}</div>
-            </div>
-          ))}
-          <div style={{ marginTop: 8, background: "#F0F6FF", borderLeft: "3px solid #0070CC", borderRadius: 4, padding: "10px 12px" }}>
-            <div style={{ fontFamily: MONO, fontSize: 10, fontWeight: 600, color: "#0070CC", marginBottom: 6, letterSpacing: "0.06em" }}>KEY METRICS</div>
-            <div style={{ display: "flex", gap: 16 }}>
-              {[["42", "NPS"], ["23%", "Refill"], ["65+", "Target"]].map(([val, lbl]) => (
-                <div key={lbl}>
-                  <div style={{ fontFamily: IBM, fontSize: 18, fontWeight: 700, color: "#201F1E" }}>{val}</div>
-                  <div style={{ fontSize: 10, color: "#666" }}>{lbl}</div>
-                </div>
-              ))}
+        {/* Right panel — project summary + pinned CTA */}
+        <div style={{ width: 260, flexShrink: 0, borderLeft: "1px solid #EEEEEE", background: "#FFFFFF", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+          {/* Scrollable content */}
+          <div style={{ flex: 1, overflowY: "auto", padding: "20px" }}>
+            <div style={{ fontFamily: IBM, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", color: "#1A1A1A", marginBottom: 14, textTransform: "uppercase" as const }}>Project Summary</div>
+            {[
+              ["Project", "LillyConnect Portal Refresh"],
+              ["ID",      "LILLYCONNECT-PORTAL"],
+              ["NPS now", "42"],
+              ["Target",  "65+"],
+              ["Refill",  "23% → improve"],
+              ["Team",    "Jordan + Maya + Jamie + Morgan"],
+            ].map(([label, value]) => (
+              <div key={label} style={{ marginBottom: 12 }}>
+                <div style={{ fontFamily: IBM, fontSize: 10, fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: "#AAAAAA", marginBottom: 2 }}>{label}</div>
+                <div style={{ fontFamily: label === "ID" ? MONO : IBM, fontSize: 12, color: "#1A1A1A", lineHeight: "16px" }}>{value}</div>
+              </div>
+            ))}
+            <div style={{ marginTop: 8, background: "#F0F6FF", borderLeft: "3px solid #0070CC", borderRadius: 4, padding: "10px 12px" }}>
+              <div style={{ fontFamily: MONO, fontSize: 10, fontWeight: 600, color: "#0070CC", marginBottom: 6, letterSpacing: "0.06em" }}>KEY METRICS</div>
+              <div style={{ display: "flex", gap: 16 }}>
+                {[["42", "NPS"], ["23%", "Refill"], ["65+", "Target"]].map(([val, lbl]) => (
+                  <div key={lbl}>
+                    <div style={{ fontFamily: IBM, fontSize: 18, fontWeight: 700, color: "#201F1E" }}>{val}</div>
+                    <div style={{ fontSize: 10, color: "#666" }}>{lbl}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
+          {/* CTA pinned to bottom — same pattern as S04 Skills rail */}
           {phase >= 7 && (
-            <button
-              className="fade-up-1"
-              onClick={() => window.dispatchEvent(new CustomEvent("df:next"))}
-              style={{
-                marginTop: "auto", paddingTop: 16, width: "100%",
-                padding: "12px 0",
-                background: LILLY, color: "white",
-                border: "none", borderRadius: 7,
-                fontFamily: IBM, fontSize: 13, fontWeight: 600,
-                cursor: "pointer",
-              }}
-            >
-              Kick things off in Teams →
-            </button>
+            <div style={{ flexShrink: 0, padding: "16px 20px", borderTop: "1px solid #F0F0F0" }}>
+              <button
+                className="fade-up-1"
+                onClick={() => window.dispatchEvent(new CustomEvent("df:next"))}
+                style={{
+                  width: "100%", padding: "12px 0",
+                  background: LILLY, color: "white",
+                  border: "none", borderRadius: 7,
+                  fontFamily: IBM, fontSize: 13, fontWeight: 600,
+                  cursor: "pointer",
+                }}
+              >
+                Kick things off in Teams →
+              </button>
+            </div>
           )}
         </div>
       </div>
