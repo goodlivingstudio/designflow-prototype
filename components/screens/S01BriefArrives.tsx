@@ -129,7 +129,11 @@ export default function S01BriefArrives() {
                   <div style={{ fontFamily: "'Lexend', system-ui, sans-serif", fontSize: 11, fontWeight: 500, color: "#2D3B4F", marginBottom: 2 }}>DesignFlow</div>
                   <div style={{ fontSize: 12, color: "#605E5C" }}>Brief detected — workspace staged for LillyConnect Portal Refresh</div>
                 </div>
-                <div data-h="1" style={{ background: "#E1251B", borderRadius: 4, padding: "6px 14px", fontSize: 11, fontWeight: 600, color: "white", cursor: "pointer", whiteSpace: "nowrap" }}>Open →</div>
+                <div
+                  data-h="1"
+                  onClick={() => window.dispatchEvent(new CustomEvent("df:next"))}
+                  style={{ background: "#E1251B", borderRadius: 4, padding: "6px 14px", fontSize: 11, fontWeight: 600, color: "white", cursor: "pointer", whiteSpace: "nowrap" }}
+                >Open →</div>
               </div>
             </div>
           </div>

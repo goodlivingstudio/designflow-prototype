@@ -87,7 +87,7 @@ export default function S04SelectWorkflow() {
           </div>
 
           {/* Workflow cards — equal height, click to select */}
-          <div style={{ display: "flex", alignItems: "stretch", gap: 16, marginBottom: selectedTitle ? 16 : 0 }}>
+          <div style={{ display: "flex", alignItems: "stretch", gap: 16 }}>
             {WORKFLOWS.map(wf => (
               <div key={wf.title} style={{ flex: 1, display: "flex" }} onClick={() => setSelectedTitle(wf.title)}>
                 <SkillCard
@@ -97,23 +97,6 @@ export default function S04SelectWorkflow() {
               </div>
             ))}
           </div>
-
-          {/* CTA — appears after user selects a workflow */}
-          {selectedTitle && (
-            <button
-              className="fade-up-1"
-              onClick={() => window.dispatchEvent(new CustomEvent("df:next"))}
-              style={{
-                width: "100%", padding: "13px 0",
-                background: LILLY, color: "white",
-                border: "none", borderRadius: 7,
-                fontFamily: IBM, fontSize: 14, fontWeight: 600,
-                cursor: "pointer", marginBottom: 28,
-              }}
-            >
-              Kick off your team in Teams →
-            </button>
-          )}
 
           {/* All workflows table (Cookbook-style) */}
           <div style={{ marginTop: 36 }}>
@@ -148,13 +131,28 @@ export default function S04SelectWorkflow() {
           </div>
         </div>
 
-        {/* Skills sidebar — animates in as each skill loads */}
+        {/* Skills sidebar — animates in as each skill loads; CTA docks at bottom after selection */}
         <SkillsStatus
           skills={skillStatuses.slice(0, loadedSkills + 1)}
           gates={loadedSkills >= 3 ? [
             { step: "07", label: "HIPAA Review",    sub: "Compliance checkpoint" },
             { step: "10", label: "508 Audit",        sub: "Accessibility gate" },
           ] : undefined}
+          cta={selectedTitle ? (
+            <button
+              className="fade-up-1"
+              onClick={() => window.dispatchEvent(new CustomEvent("df:next"))}
+              style={{
+                width: "100%", padding: "12px 0",
+                background: LILLY, color: "white",
+                border: "none", borderRadius: 7,
+                fontFamily: IBM, fontSize: 13, fontWeight: 600,
+                cursor: "pointer",
+              }}
+            >
+              KO in Teams →
+            </button>
+          ) : undefined}
         />
       </div>
     </DFMarketplace>

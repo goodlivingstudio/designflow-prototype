@@ -115,16 +115,9 @@ export function SkillCard({ title, description, tags, selected, recommended, ste
           <span style={{ fontSize: 10, fontWeight: 700, color: "white", letterSpacing: "0.04em" }}>RECOMMENDED</span>
         </div>
       )}
-      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12, marginBottom: 8 }}>
-        <div>
-          <div style={{ fontSize: 15, fontWeight: 700, color: "#1A1A1A", marginBottom: 2 }}>{title}</div>
-          {step && <div style={{ fontSize: 11, fontWeight: 600, color: LILLY }}>{step}</div>}
-        </div>
-        {selected && (
-          <div style={{ width: 22, height: 22, borderRadius: "50%", background: LILLY, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-            <Check size={12} color="white" strokeWidth={2.5} />
-          </div>
-        )}
+      <div style={{ marginBottom: 8 }}>
+        <div style={{ fontSize: 15, fontWeight: 700, color: "#1A1A1A", marginBottom: 2 }}>{title}</div>
+        {step && <div style={{ fontSize: 11, fontWeight: 600, color: LILLY }}>{step}</div>}
       </div>
       <div style={{ fontSize: 12, color: "#666", lineHeight: "18px", marginBottom: 14, flex: 1 }}>{description}</div>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
@@ -147,9 +140,10 @@ export function SkillCard({ title, description, tags, selected, recommended, ste
 interface SkillsStatusProps {
   skills: Array<{ label: string; status: "ready" | "loading" | "gap" }>;
   gates?: Array<{ step: string; label: string; sub: string }>;
+  cta?: React.ReactNode;
 }
 
-export function SkillsStatus({ skills, gates }: SkillsStatusProps) {
+export function SkillsStatus({ skills, gates, cta }: SkillsStatusProps) {
   return (
     <div style={{ width: 280, flexShrink: 0, borderLeft: "1px solid #EEEEEE", background: "#FFFFFF", display: "flex", flexDirection: "column", overflow: "hidden" }}>
       <div style={{ padding: "16px 20px 12px", borderBottom: "1px solid #F0F0F0" }}>
@@ -190,6 +184,11 @@ export function SkillsStatus({ skills, gates }: SkillsStatusProps) {
             ))}
           </div>
         </>
+      )}
+      {cta && (
+        <div style={{ marginTop: "auto", padding: "16px 20px", borderTop: "1px solid #F0F0F0" }}>
+          {cta}
+        </div>
       )}
     </div>
   );
