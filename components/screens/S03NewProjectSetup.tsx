@@ -173,7 +173,7 @@ export default function S03NewProjectSetup() {
                   cursor: "pointer",
                 }}
               >
-                Kick things off in Teams →
+                Review workflow →
               </button>
             </div>
           )}
