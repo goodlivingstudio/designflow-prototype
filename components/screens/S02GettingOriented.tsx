@@ -101,22 +101,6 @@ export default function S02GettingOriented() {
         </div>
       )}
 
-      {/* CTA — appears once Journey-Templates finishes */}
-      {showCTA && (
-        <button
-          className="fade-up-1"
-          onClick={() => window.dispatchEvent(new CustomEvent("df:next"))}
-          style={{
-            width: "100%", padding: "13px 0",
-            background: LILLY, color: "white",
-            border: "none", borderRadius: 7,
-            fontFamily: IBM, fontSize: 14, fontWeight: 600,
-            cursor: "pointer", letterSpacing: "0.01em",
-          }}
-        >
-          Set up your project →
-        </button>
-      )}
     </div>
   );
 
@@ -129,7 +113,24 @@ export default function S02GettingOriented() {
     >
       <div style={{ display: "flex", height: "100%", overflow: "hidden" }}>
         {canvas}
-        <SkillsStatus skills={allSkills} />
+        <SkillsStatus
+          skills={allSkills}
+          cta={showCTA ? (
+            <button
+              className="fade-up-1"
+              onClick={() => window.dispatchEvent(new CustomEvent("df:next"))}
+              style={{
+                width: "100%", padding: "12px 0",
+                background: LILLY, color: "white",
+                border: "none", borderRadius: 7,
+                fontFamily: IBM, fontSize: 13, fontWeight: 600,
+                cursor: "pointer",
+              }}
+            >
+              Set up your project →
+            </button>
+          ) : undefined}
+        />
       </div>
     </DFMarketplace>
   );
